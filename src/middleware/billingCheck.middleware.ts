@@ -6,7 +6,6 @@ import { logger } from '../lib/logger'
 import { env } from '../config/env'
 
 export const billingCheckMiddleware = async ( 
-  req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
 ): Promise<void> => {

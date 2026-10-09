@@ -3,7 +3,7 @@ import { processPRAnalysis } from './pr-analysis.worker'
 import { PullRequestModel } from '../models/PullRequest.model'
 import { AnalysisStatus } from '../globals/enums'
 import { PRAnalysisJobData } from '../globals/types'
-import { retryWithBackoff } from '../utils/retry.util'
+// import { retryWithBackoff } from '../utils/retry.util'
 import { logger } from '../lib/logger'
 
 export const prAnalysisQueue = {
