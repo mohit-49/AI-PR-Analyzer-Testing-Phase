@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose'
 import { IUser } from '../globals/interfaces'
 import { BillingPlan, GitProvider } from '../globals/enums'
-import { PLAN_LIMITS } from '../globals/constants'
 
 export type UserDocument = IUser & Document
 

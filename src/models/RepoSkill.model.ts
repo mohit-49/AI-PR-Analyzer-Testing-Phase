@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose'
 import { IRepoSkill } from '../globals/interfaces'
-import { SkillStatus } from '../globals/enums'
+// import { SkillStatus } from '../globals/enums'
 
 export type RepoSkillDocument = IRepoSkill & Document
 
