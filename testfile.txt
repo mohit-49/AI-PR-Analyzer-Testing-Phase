@@ -75,23 +75,5 @@
       "createdAt": "2026-10-12",
       "reviewedBy": "John Smith"
     },
-    {
-      "id": 502,
-      "title": "Fix payment validation errors",
-      "author": "David Wilson",
-      "status": "Open",
-      "repository": "payment-service",
-      "createdAt": "2026-10-14",
-      "reviewedBy": "Sarah Williams"
-    },
-    {
-      "id": 503,
-      "title": "Improve dashboard loading performance",
-      "author": "Sarah Williams",
-      "status": "Under Review",
-      "repository": "analytics-dashboard",
-      "createdAt": "2026-10-15",
-      "reviewedBy": "John Smith"
-    }
   ]
 }
