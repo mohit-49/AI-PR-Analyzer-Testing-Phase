@@ -1,0 +1,97 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "email": "john.smith@example.com",
+      "role": "Admin",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Emily Johnson",
+      "email": "emily.johnson@example.com",
+      "role": "Developer",
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "name": "Michael Brown",
+      "email": "michael.brown@example.com",
+      "role": "Manager",
+      "status": "Inactive"
+    },
+    {
+      "id": 4,
+      "name": "Sarah Williams",
+      "email": "sarah.williams@example.com",
+      "role": "Tester",
+      "status": "Active"
+    },
+    {
+      "id": 5,
+      "name": "David Wilson",
+      "email": "david.wilson@example.com",
+      "role": "Developer",
+      "status": "Pending"
+    }
+  ],
+  "projects": [
+    {
+      "id": 101,
+      "name": "Customer Portal",
+      "description": "A web application for managing customer accounts and support requests.",
+      "status": "In Progress",
+      "priority": "High",
+      "assignedTo": "Emily Johnson",
+      "dueDate": "2026-11-15"
+    },
+    {
+      "id": 102,
+      "name": "Payment Integration",
+      "description": "Integrate a secure payment gateway into the existing platform.",
+      "status": "Completed",
+      "priority": "Critical",
+      "assignedTo": "David Wilson",
+      "dueDate": "2026-10-10"
+    },
+    {
+      "id": 103,
+      "name": "Analytics Dashboard",
+      "description": "Build a dashboard to visualize application usage and performance.",
+      "status": "Pending",
+      "priority": "Medium",
+      "assignedTo": "Sarah Williams",
+      "dueDate": "2026-12-01"
+    }
+  ],
+  "pullRequests": [
+    {
+      "id": 501,
+      "title": "Add user authentication",
+      "author": "Emily Johnson",
+      "status": "Merged",
+      "repository": "customer-portal",
+      "createdAt": "2026-10-12",
+      "reviewedBy": "John Smith"
+    },
+    {
+      "id": 502,
+      "title": "Fix payment validation errors",
+      "author": "David Wilson",
+      "status": "Open",
+      "repository": "payment-service",
+      "createdAt": "2026-10-14",
+      "reviewedBy": "Sarah Williams"
+    },
+    {
+      "id": 503,
+      "title": "Improve dashboard loading performance",
+      "author": "Sarah Williams",
+      "status": "Under Review",
+      "repository": "analytics-dashboard",
+      "createdAt": "2026-10-15",
+      "reviewedBy": "John Smith"
+    }
+  ]
+}
