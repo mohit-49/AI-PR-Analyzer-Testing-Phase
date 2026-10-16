@@ -8,23 +8,6 @@ import { logger } from '../lib/logger'
 
 export class WebhookController {
 
-  async handleGitHub(req: Request, res: Response, next: NextFunction): Promise<void> {
-    try {
-      const event = req.headers['x-github-event'] as string
-      const signature = req.headers['x-hub-signature-256'] as string | undefined
-      const payload = req.body
-
-      if (event !== 'pull_request') {
-        res.json({ success: true, data: { message: 'Event ignored' } })
-        return
-      }
-
-      const action = payload.action as string
-      const prData = payload.pull_request
-
-      const repository = await RepositoryModel.findOne({
-        repoId: String(payload.repository.id),
-        isActive: true,
       }).sort({ createdAt: -1 })
 
       if (!repository) {

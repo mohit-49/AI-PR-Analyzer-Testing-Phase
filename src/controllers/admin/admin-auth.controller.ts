@@ -8,16 +8,6 @@ import { JWT_EXPIRES_IN } from '@/globals/constants'
 import { ValidationError, UnauthorizedError } from '@/lib/errors'
 import { logger } from '@/lib/logger'
 
-const AdminLoginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
-})
-
-const DUMMY_HASH = '$2a$12$CwTycUXDFGHWue0Thq9StjUM0uJ8Q8QQ8Q8QSDHKFNKGHQ8Q8QDFGHQ8DFGHQ8DFGHQ8Qe'
-
-export class AdminAuthController {
-  async login(req: Request, res: Response, next: NextFunction): Promise<void> {
-    try {
       const parsed = AdminLoginSchema.safeParse(req.body)
       if (!parsed.success) throw new ValidationError('Email and password are required')
       const { email, password } = parsed.data
