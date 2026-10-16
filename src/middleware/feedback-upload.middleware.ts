@@ -54,17 +54,3 @@ export const uploadScreenshots = (req: Request, res: Response, next: NextFunctio
   })
 }
 
-// mimetype client bhejta hai, isliye file ke asli bytes bhi check karte hain
-export async function hasImageSignature(filePath: string): Promise<boolean> {
-  const fh = await fs.promises.open(filePath, 'r')
-  try {
-    const buf = Buffer.alloc(12)
-    await fh.read(buf, 0, 12, 0)
-    const png = buf.subarray(0, 4).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47]))
-    const jpg = buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff
-    const webp = buf.subarray(0, 4).toString() === 'RIFF' && buf.subarray(8, 12).toString() === 'WEBP'
-    return png || jpg || webp
-  } finally {
-    await fh.close()
-  }
-}

@@ -261,48 +261,10 @@ export class AnalysisController {
       // Provider par repo ki asli total PRs
       let counts: { total: number; open: number; merged: number; declined: number } | null = null
       try {
-        const user = await UserModel.findById(userId).select(
-          'githubAccessToken bitbucketAccessToken gitlabAccessToken'
-        )
-        if (!user) throw new NotFoundError('User not found')
 
-        const accessToken =
-          repository.provider === GitProvider.BITBUCKET
-            ? await getValidBitbucketAccessToken(userId)
-            : getDecryptedTokenForProvider(user, repository.provider)
-
-        counts = await getProviderPRCounts(repository.provider, accessToken, repository.fullName)
-      } catch (err) {
-        logger.warn({ err, repoId: repository._id }, 'Provider PR count failed')
-      }
 
       // Fallback: provider se na mile (azure/codecommit/error) to DB se count
-      if (!counts) {
-        const base = { userId, repositoryId: repository._id }
-        const [open, merged, declined] = await Promise.all([
-          PullRequestModel.countDocuments({ ...base, status: PRStatus.OPEN }),
-          PullRequestModel.countDocuments({ ...base, status: PRStatus.MERGED }),
-          PullRequestModel.countDocuments({ ...base, status: PRStatus.DECLINED }),
-        ])
-        counts = { total: analyzed, open, merged, declined }
-      }
 
-      res.status(200).json({
-        success: true,
-        status: 200,
-        message: 'Repository PR count fetched successfully.',
-        data: {
-          analyzed,
-          total: counts.total,
-          open: counts.open,
-          merged: counts.merged,
-          declined: counts.declined,
-        },
-      })
-    } catch (error) {
-      next(error)
-    }
-  }
 
   // POST /api/analysis/pr/:prId/merge
   async mergePR(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
