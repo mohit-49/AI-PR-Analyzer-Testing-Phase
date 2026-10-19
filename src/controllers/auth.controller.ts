@@ -378,26 +378,7 @@ export class AuthController {
         data: { user: updated }
       })
     } catch (error) {
-      next(error)
-    }
-  }
-
-  // PUT /api/auth/me/bitbucket-profile — SIRF local save, koi external sync nahi
-  async updateBitbucketProfile(req: Request, res: Response, next: NextFunction): Promise<void> {
-    try {
-      const { userId } = (req as any).user
-      const schema = z.object({
-        fullName: z.string().max(120).optional(),
-        publicName: z.string().max(120).optional(),
-        jobTitle: z.string().max(120).optional(),
-        department: z.string().max(120).optional(),
-        organization: z.string().max(120).optional(),
-        basedIn: z.string().max(120).optional(),
-        localTime: z.string().max(60).optional(),
-        workingWithYou: z.string().max(300).optional(),
-      })
-      const parsed = schema.safeParse(req.body)
-      if (!parsed.success) throw new ValidationError('Invalid profile data')
+    ow new ValidationError('Invalid profile data')
 
       const updated = await UserModel.findByIdAndUpdate(
         userId,

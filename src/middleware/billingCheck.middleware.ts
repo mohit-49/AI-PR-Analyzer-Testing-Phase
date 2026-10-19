@@ -7,20 +7,7 @@ import { env } from '../config/env'
 
 export const billingCheckMiddleware = async ( 
   req: AuthenticatedRequest,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  try {
-    const user = await UserModel.findById(req.user!.userId).select('tokenUsage plan')
-    if (!user) {
-      next(new BillingLimitError())
-      return
-    }
 
-     if (env.LLM_FAMILY === 'ollama') {
-      next()
-      return
-    }
 
     if (user.tokenUsage.used >= user.tokenUsage.limit) {
       logger.warn({ userId: req.user!.userId }, 'Billing limit exceeded')

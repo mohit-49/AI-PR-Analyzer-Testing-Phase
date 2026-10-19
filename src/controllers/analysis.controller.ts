@@ -204,26 +204,7 @@ export class AnalysisController {
         })
 
         res.status(200).json({
-          success: true,
-          status: 200,
-          message: 'Repository pull requests fetched successfully.',
-          data: { items, total: listed.total, analyzed, page, limit },
-        })
-        return
-      }
 
-      // 3) Fallback (azure/codecommit ya provider error): sirf DB wali PRs
-      const prs = await PullRequestModel.find({ userId, repositoryId: repository._id })
-        .sort({ createdAt: -1 })
-        .skip((page - 1) * limit)
-        .limit(limit)
-      const analyses = await AnalysisModel.find({ pullRequestId: { $in: prs.map((p) => p._id) } })
-      const analysisByPR = Object.fromEntries(analyses.map((a) => [a.pullRequestId.toString(), a]))
-
-      const items = prs.map((pr: any) => ({
-        prId: pr._id,
-        prNumber: pr.prNumber,
-        title: pr.title,
         author: pr.author,
         avatar: null,
         status: String(pr.status).toLowerCase(),
