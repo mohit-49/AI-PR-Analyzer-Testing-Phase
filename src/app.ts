@@ -4,22 +4,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import path from 'path'
 import { connectDatabase } from './config/database'
-import { env } from './config/env'
-import { logger } from './lib/logger'
-import { errorHandlerMiddleware } from './middleware/errorHandler.middleware'
-import { apiRateLimit } from './middleware/rateLimit.middleware'
-import { FEEDBACK_UPLOAD_DIR, FEEDBACK_PUBLIC_PATH } from './middleware/feedback-upload.middleware'
 
-// Routes
-import authRoutes from './routes/auth.routes'
-import repositoryRoutes from './routes/repository.routes'
-import webhookRoutes from './routes/webhook.routes'
-import analysisRoutes from './routes/analysis.routes'
-import billingRoutes from './routes/billing.routes'
-import healthRoutes from './routes/health.routes'
-import skillRoutes from './routes/skill.routes'
-
-// Workers — import to start them Redis
 // import './queues/pr-analysis.worker'
 // import '@/queues/skill-generation.worker'
 
