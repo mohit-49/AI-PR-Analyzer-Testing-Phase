@@ -11,17 +11,7 @@ const AnalysisOutputSchema = z.object({
   riskScore: z.number().min(0).max(100),
   riskReasons: z.array(z.string()).max(8),
   testingSuggestions: z
-    .array(
-      z.object({
-        area: z.string(),
-        suggestion: z.string(),
-        priority: z.preprocess((val) => {
-          const v = String(val).toUpperCase()
-          if (v === 'LOW' || v === 'MEDIUM' || v === 'HIGH') return v
-          if (v === 'CRITICAL') return 'HIGH'
-          return 'MEDIUM'
-        }, z.enum(['LOW', 'MEDIUM', 'HIGH'])),
-      })
+
     )
     .max(15),
   reviewComments: z

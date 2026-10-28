@@ -6,19 +6,7 @@ export const readFileTool: AgentTool = {
   definition: {
     name: 'read_file',
     description: "Reads the content of a single file in the repository, given its path.",
-    parameters: {
-      type: 'object',
-      properties: {
-        path: { type: 'string', description: "File path relative to repo root, e.g. 'package.json' or 'src/app.ts'." },
-      },
-      required: ['path'],
-    },
-  },
-  describeCall: (args) => `Reading ${String(args.path ?? 'file')}`,
-  execute: async (args, ctx) => {
-    const path = String(args.path ?? '').trim()
-    if (!path) return 'No path was provided.'
-
+ 
     if (isExcludedPath(path)) {
       return `Skipped — "${path}" is inside node_modules/ (or .git/) and is not analyzed.`
     }

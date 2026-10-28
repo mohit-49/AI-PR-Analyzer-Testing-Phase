@@ -10,16 +10,7 @@ const UserSchema = new Schema<UserDocument>(
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
     passwordHash: { type: String, select: false },
 
-    isActive: { type: Boolean, default: true },
-
-    email: { type: String, required: true, unique: true, lowercase: true },
-    name: { type: String, required: true },
-    avatarUrl: { type: String, default: '' },
-    customAvatarUrl: { type: String, default: '' },
-    bio: { type: String, default: '' },
-    company: { type: String, default: '' },
-    location: { type: String, default: '' },
-    blog: { type: String, default: '' },
+    tring, default: '' },
 
     bitbucketAvatarUrl: { type: String, default: '' },
     lastLoginProvider: { type: String, enum: ['github', 'bitbucket'], default: 'github' },
