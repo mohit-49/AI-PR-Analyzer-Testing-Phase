@@ -10,16 +10,6 @@ import { getValidBitbucketAccessToken } from '@/services/providers/bitbucket-ref
 import { runSkillGenerationAgent } from '../agents/skill-generation-agent/entrypoint'
 import { getAgentLogger } from '../agents/core/logger'
 import { billingService } from '../services/billing.service'
-import { BillingAction } from '../globals/enums'
-import { env } from '../config/env'
-
-const log = getAgentLogger('skill-generation-agent')
-
-export const processSkillAgentGeneration = async (job: Job<SkillGenerationJobData>): Promise<void> => {
-  const { repositoryId, userId, githubRepoFullName, defaultBranch } = job.data
-  const provider = job.data.provider ?? GitProvider.GITHUB
-
-  log.info({ repositoryId, githubRepoFullName, provider }, 'Agent-based skill generation job started')
 
   const draft = job.data.skillId
     ? await RepoSkillModel.findById(job.data.skillId)

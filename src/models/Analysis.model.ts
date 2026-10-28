@@ -8,17 +8,7 @@ const AnalysisSchema = new Schema<AnalysisDocument>(
   {
     pullRequestId: { type: Schema.Types.ObjectId, ref: 'PullRequest', required: true },
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    summary: { type: String, required: true },
-    riskLevel: { type: String, enum: Object.values(RiskLevel), required: true },
-    riskScore: { type: Number, min: 0, max: 100, required: true },
-    riskReasons: [{ type: String }],
-    testingSuggestions: [
-      {
-        area: String,
-        suggestion: String,
-        priority: { type: String, enum: ['LOW', 'MEDIUM', 'HIGH'] },
-      },
-    ],
+
     reviewComments: [
       {
         file: String,

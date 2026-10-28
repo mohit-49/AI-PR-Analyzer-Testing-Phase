@@ -7,18 +7,6 @@ import { activateSkillVersion } from '../services/skill-version.service'
 import { RepoSkillModel } from '../models/RepoSkill.model'
 import { UserModel } from '../models/User.model'
 import { getDecryptedTokenForProvider } from '../utils/provider-token.util'
-import { logger } from '../lib/logger'
-import { getValidBitbucketAccessToken } from '@/services/providers/bitbucket-refresh-token/bitbucket-token.service'
-import { billingService } from '../services/billing.service'
-import { env } from '../config/env'
-// import { emailService } from '@/services/pr-send-mail/premail.service'
-
-export const processSkillGeneration = async (job: Job<SkillGenerationJobData>): Promise<void> => {
-  const { repositoryId, userId, githubRepoFullName, defaultBranch, skillId } = job.data
-  const provider = job.data.provider ?? GitProvider.GITHUB
-
-  logger.info({ repositoryId, githubRepoFullName, provider, skillId }, 'Starting skill file generation job')
-
   if (!skillId) {
     throw new Error('processSkillGeneration requires job.data.skillId (draft must be created before enqueueing)')
   }
